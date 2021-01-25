@@ -1,3 +1,5 @@
+import os
+
 board = [[1,2,3],[4,5,6],[7,8,9]]
 marker = 'X'
 bloked = []
@@ -61,3 +63,13 @@ def move():
                     break
                 except:
                     print('type number: 1-9\n')
+def switch():
+    global marker
+    if marker == 'X':
+        marker='O'
+        print('Player 2\n')
+    elif marker == 'O':
+        marker = 'X'
+        print('Player 1\n')
+def clear():
+    os.system('cls' if os.name=='nt' else 'clear')
