@@ -73,3 +73,49 @@ def switch():
         print('Player 1\n')
 def clear():
     os.system('cls' if os.name=='nt' else 'clear')
+def win():
+    if board[0][0]==marker and board[0][1]==marker and board[0][2]==marker:
+        return True
+    elif board[1][0]==marker and board[1][1]==marker and board[1][2]==marker:
+        return True
+    elif board[2][0]==marker and board[2][1]==marker and board[2][2]==marker:
+        return True
+    elif board[0][0]==marker and board[1][0]==marker and board[2][0]==marker:
+        return True
+    elif board[0][1]==marker and board[1][1]==marker and board[2][1]==marker:
+        return True
+    elif board[0][2]==marker and board[1][2]==marker and board[2][2]==marker:
+        return True
+    elif board[0][0]==marker and board[1][1]==marker and board[2][2]==marker:
+        return True
+    elif board[0][2]==marker and board[1][1]==marker and board[2][0]==marker:
+        return True
+    else:
+        return False
+def tie():
+    tie = False
+    for i in range(1,10):
+        
+        if i in board[0] or i in board[1] or i in board[2]:
+            tie = False
+            break
+        else:
+            tie = True
+    return tie  
+def game():
+    print('Player 1\n')
+    while True:
+        show()
+        move()
+        clear()
+        if win() is True:
+            show()
+            print('YOU WON!!!')
+            break
+        if tie() is True:
+            show()
+            print("It's a TIE")
+            break
+        switch()
+      
+game()
